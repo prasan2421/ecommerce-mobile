@@ -25,7 +25,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import Index from './src/index';
-import Navigation from './navigation';
+import Navigation from './components/navigation';
 import { Provider as PaperProvider } from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -63,7 +63,7 @@ function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: 'isDarkMode ? Colors.darker : Colors.lighter',
+   
     flex:1
   };
 
@@ -74,8 +74,9 @@ function App(): JSX.Element {
         animated={true}
         showHideTransition={'slide'}
          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-         backgroundColor={backgroundStyle.backgroundColor}
+         backgroundColor={isDarkMode ? Colors.darker : Colors.lighter}
        />
+       
     <NavigationContainer>
     <PaperProvider>
     <Navigation />

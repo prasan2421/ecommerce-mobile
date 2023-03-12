@@ -27,6 +27,7 @@
  } from 'react-native/Libraries/NewAppScreen';
  import { Button } from 'react-native-paper';
  import { Chip } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
  
  type SectionProps = PropsWithChildren<{
    title: string;
@@ -87,8 +88,8 @@
 
 const LeftContent = (props:any) => <Avatar.Icon {...props} icon="folder" />
 
-const MyComponent = () => (
-  <Card style={{marginHorizontal:10, width:150}}>
+const MyComponent = ({navigation}:any) => (
+  <Card style={{marginHorizontal:10, width:150}} onPress={()=>navigation.navigate('Detail')}>
     
     
     <Card.Cover  source={{ uri: 'https://picsum.photos/700' }} />
@@ -106,7 +107,7 @@ const MyComponent = () => (
   </Card>
 );
  
- function Index(): JSX.Element {
+ function Index({navigation}:any): JSX.Element {
    const isDarkMode = useColorScheme() === 'dark';
    const [text, setText] = React.useState('');
 
@@ -122,6 +123,7 @@ const MyComponent = () => (
          style={backgroundStyle}
          alwaysBounceHorizontal
          >
+          
         <View style={styles.sectionContainerWrapper}>
          <View>
           
@@ -131,7 +133,7 @@ const MyComponent = () => (
           
          </View>
          <View style={styles.sectionContainer}>
-         <Chip style={{padding:10, elevation:10}} icon="magnify" mode="outlined" onPress={() => Alert.alert('Alert','Pressed')}>Search</Chip>
+         <Chip style={{padding:10, elevation:10}} icon="magnify" mode="outlined" onPress={() => navigation.navigate('Search')}>Search</Chip>
          </View>
          </View>
          <ScrollView horizontal={true} alwaysBounceHorizontal showsHorizontalScrollIndicator={false} style={{paddingVertical:20}}>
@@ -159,10 +161,10 @@ const MyComponent = () => (
            </Section2> 
            <ScrollView horizontal={true} alwaysBounceHorizontal showsHorizontalScrollIndicator={false} style={{paddingVertical:20}}>
          <View style={{ flexDirection: 'row', marginVertical:10}}>
-<MyComponent/>
-<MyComponent/>
-<MyComponent/>
-<MyComponent/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
            </View>
            </ScrollView>
       </View>
@@ -173,10 +175,10 @@ const MyComponent = () => (
            </Section2> 
            <ScrollView horizontal={true} alwaysBounceHorizontal showsHorizontalScrollIndicator={false} style={{paddingVertical:20}}>
          <View style={{ flexDirection: 'row', marginVertical:10}}>
-<MyComponent/>
-<MyComponent/>
-<MyComponent/>
-<MyComponent/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
            </View>
            </ScrollView>
       </View>
@@ -186,10 +188,10 @@ const MyComponent = () => (
            </Section2> 
            <ScrollView horizontal={true} alwaysBounceHorizontal showsHorizontalScrollIndicator={false} style={{paddingVertical:20}}>
          <View style={{ flexDirection: 'row', marginVertical:10}}>
-<MyComponent/>
-<MyComponent/>
-<MyComponent/>
-<MyComponent/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
+<MyComponent navigation={navigation}/>
            </View>
            </ScrollView>
       </View>
